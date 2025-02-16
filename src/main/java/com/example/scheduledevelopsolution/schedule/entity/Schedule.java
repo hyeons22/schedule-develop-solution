@@ -32,8 +32,7 @@ public class Schedule extends DateBaseEntity {
         this.content = content;
     }
 
-    public void update(String userName, String title, String content) {
-        this.userName = userName;
+    public void update(String title, String content) {
         this.title = title;
         this.content = content;
     }

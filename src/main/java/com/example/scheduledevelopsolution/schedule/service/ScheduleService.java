@@ -87,7 +87,6 @@ public class ScheduleService {
                 () -> new IllegalArgumentException("id에 맞는 일정이 없습니다.")
         );
         schedule.update(
-                requestDto.getUserName(),
                 requestDto.getTitle(),
                 requestDto.getContent()
         );
@@ -106,5 +105,8 @@ public class ScheduleService {
         );
     }
 
-
+    @Transactional
+    public void deleteById(Long scheduleId) {
+        scheduleRepository.deleteById(scheduleId);
+    }
 }
