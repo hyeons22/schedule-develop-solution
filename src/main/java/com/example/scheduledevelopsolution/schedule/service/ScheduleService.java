@@ -16,6 +16,19 @@ public class ScheduleService {
 
     @Transactional
     public ScheduleSaveResponseDto save(ScheduleSaveRequestDto requestDto) {
-        new Schedule(requestDto)
+        Schedule schedule = new Schedule(
+                requestDto.getUserName(),
+                requestDto.getTitle(),
+                requestDto.getContent()
+        );
+        Schedule savedSchdule = scheduleRepository.save(schedule);
+        return new ScheduleSaveResponseDto(
+                savedSchdule.getId(),
+                savedSchdule.getUserName(),
+                savedSchdule.getTitle(),
+                savedSchdule.getContent(),
+                savedSchdule.getCreatedAt(),
+                savedSchdule.getModifiedAt()
+        );
     }
 }
